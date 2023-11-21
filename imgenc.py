@@ -1,7 +1,14 @@
+# C:\Users\maria\Desktop\bobpat.jpg
+
 # try block to handle exception
 try:
 	# take path of image as a input
 	path = input(r'Enter path of Image : ')
+
+	# check if the file extension corresponds to an image format
+	allowed_extensions = ('.jpg', '.jpeg', '.png')
+	if not path.lower().endswith(allowed_extensions):
+		raise ValueError("Invalid file format! Please provide a valid image file.")
 	
 	# taking encryption key as input
 	key = int(input('Enter Key for encryption of Image : '))
@@ -35,5 +42,5 @@ try:
 	print('Encryption Done...')
 
 	
-except Exception:
-	print('Error caught : ', Exception.__name__)
+except Exception as e:
+    print('Error caught:', str(e))
