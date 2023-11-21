@@ -1,4 +1,5 @@
 # C:\Users\maria\Desktop\bobpat.jpg
+# python imgenc.py
 
 # try block to handle exception
 try:
@@ -11,7 +12,7 @@ try:
 		raise ValueError("Invalid file format! Please provide a valid image file.")
 	
 	# taking encryption key as input
-	key = int(input('Enter Key for encryption of Image : '))
+	key = input('Enter Key for encryption of Image : ')
 	
 	# print path of image file and encryption key that
 	# we are using
@@ -28,6 +29,10 @@ try:
 	# converting image into byte array to 
 	# perform encryption easily on numeric data
 	image = bytearray(image)
+
+	# si es str convierte cada caracter en su valor ascii y lo suma, luego lo divide por 256
+	if isinstance(key, str):
+		key = sum(ord(c) for c in key) % 256
 
 	# performing XOR operation on each value of bytearray
 	for index, values in enumerate(image):

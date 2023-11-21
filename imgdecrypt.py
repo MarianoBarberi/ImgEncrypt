@@ -1,3 +1,6 @@
+# C:\Users\maria\Desktop\bobpat.jpg
+# python imgdecrypt.py
+
 # try block to handle the exception
 try:
 	# take path of image as a input
@@ -9,7 +12,7 @@ try:
 		raise ValueError("Invalid file format! Please provide a valid image file.")
 	
 	# taking decryption key as input
-	key = int(input('Enter Key for encryption of Image : '))
+	key = input('Enter Key for encryption of Image : ')
 	
 	# print path of image file and decryption key that we are using
 	print('The path of file : ', path)
@@ -25,6 +28,10 @@ try:
 	
 	# converting image into byte array to perform decryption easily on numeric data
 	image = bytearray(image)
+
+	# si es str convierte cada caracter en su valor ascii y lo suma, luego lo divide por 256
+	if isinstance(key, str):
+		key = sum(ord(c) for c in key) % 256
 
 	# performing XOR operation on each value of bytearray
 	for index, values in enumerate(image):
